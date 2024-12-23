@@ -8,7 +8,8 @@
             <!-- Navbar Links -->
             <nav class="flex space-x-4">
                 <a href="/" class="text-yellow-500 hover:text-yellow-300">Home</a>
-                <a href="/about" class="text-yellow-500 hover:text-yellow-300">About Us</a>
+                <a href="{{ route('about-us') }}" class="text-yellow-500 hover:text-yellow-300">About Us</a>
+                <a href="/QA" class="text-yellow-500 hover:text-yellow-300">Q&A</a>
                 <a href="/contact" class="text-yellow-500 hover:text-yellow-300">Contact Us</a>
 
                 <!-- Authentication Links -->
