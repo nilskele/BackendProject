@@ -11,10 +11,12 @@
                 <a href="{{ route('about-us') }}" class="text-yellow-500 hover:text-yellow-300">About Us</a>
                 <a href="/QA" class="text-yellow-500 hover:text-yellow-300">Q&A</a>
                 <a href="/contact" class="text-yellow-500 hover:text-yellow-300">Contact Us</a>
+                
 
                 <!-- Authentication Links -->
                 @auth
                     <a href="{{ route('dashboard') }}" class="text-yellow-500 hover:text-yellow-300">Dashboard</a>
+                    
                 @else
                     <a href="{{ route('login') }}" class="text-yellow-500 hover:text-yellow-300">Log In</a>
                     <a href="{{ route('register') }}" class="text-yellow-500 hover:text-yellow-300">Register</a>
