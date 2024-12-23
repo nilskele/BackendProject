@@ -3,7 +3,7 @@
         <div class="flex items-center justify-between h-16">
             <!-- Logo -->
             <div class="flex-shrink-0">
-                <img class="h-8" src="https://via.placeholder.com/150" alt="Wliquid Logo">
+            <img class="h-20" src="{{ asset('images/logo1.png') }}" alt="Logo 1">
             </div>
             <!-- Navbar Links -->
             <nav class="flex space-x-4">

@@ -21,7 +21,7 @@
 
                 <!-- Right Image Content -->
                 <div class="flex justify-center items-center">
-                    <img src="https://via.placeholder.com/500" alt="Your Image" class="w-full h-full object-cover rounded-lg shadow-lg">
+                    <img src="{{ asset('images/logo1.png') }}" alt="Your Image" class="w-full h-full object-cover rounded-lg shadow-lg">
                 </div>
             </div>
         </div>
