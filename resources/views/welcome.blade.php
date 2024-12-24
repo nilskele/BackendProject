@@ -18,6 +18,13 @@
 <div class="text-center my-12">
     <h2 class="text-3xl font-bold text-blue-600">Newsletters</h2>
 </div>
+@if($user && $user->is_admin)
+    <div class="text-center mb-8">
+        <button class="bg-blue-600 text-white py-2 px-4 rounded">
+            Add Newsletter
+        </button>
+    </div>
+@endif
 
 <!-- Newsletter Section -->
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
@@ -51,6 +58,16 @@
                         @endif
                     </a>
                 @endif
+                @if($user && $user->is_admin)
+            <div class="flex; flex-wrap: wrap; justify-content: space-between; mt-2 space-x-5" >
+                <button class="bg-yellow-500 text-white py-2 px-4 rounded">
+                    Edit
+                </button>
+                <button class="bg-red-500 text-white py-2 px-4 rounded">
+                    Remove
+                </button>
+            </div>
+        @endif
             </div>
 
             <!-- Right Image Content -->

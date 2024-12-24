@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; 
 
 class WelcomeController extends Controller
 {
     public function index(Request $request)
     {
-        // Sample data for newsletters
+        
         $newsletters = [
             [
                 'title' => 'Stay Updated',
@@ -22,17 +23,19 @@ class WelcomeController extends Controller
             ]
         ];
 
-        // Handle 'show_more' and 'show_less' query to toggle content visibility
+        
         $showFullText = [];
         foreach ($newsletters as $index => $newsletter) {
             $showFullText[$index] = $request->has('show_more') && $request->input('show_more') == $index;
         }
 
-        // Handle 'show_less' query to hide the full text (if it's set)
+        
         if ($request->has('show_less')) {
-            $showFullText = array_fill(0, count($newsletters), false); // Reset all to false (truncate text)
+            $showFullText = array_fill(0, count($newsletters), false); 
         }
 
-        return view('welcome', compact('newsletters', 'showFullText'));
+        
+        return view('welcome', compact('newsletters', 'showFullText'))->with('user', Auth::user()); 
     }
 }
+
