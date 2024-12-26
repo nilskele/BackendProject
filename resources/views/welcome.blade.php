@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- Welcome Section with Background Image -->
-<div class="relative bg-cover bg-center h-96" style="background-image: url('{{ asset('images/logo1.png') }}');">
+<div class="relative bg-cover bg-center h-96" >
     <div class="absolute inset-0 bg-white opacity-10"></div> <!-- Overlay for darkening the background image -->
     <div class="relative z-10 font-bold text-center text-blue-600 py-32">
         <h2 class="text-4xl font-semibold mb-4">Welcome to Wliquid</h2>
@@ -58,21 +58,56 @@
                         @endif
                     </a>
                 @endif
-                @if($user && $user->is_admin)
-            <div class="flex; flex-wrap: wrap; justify-content: space-between; mt-2 space-x-5" >
-                <button class="bg-yellow-500 text-white py-2 px-4 rounded">
+                @if($newsletter->comments->count() > 0)
+            <div class="mt-2">
+                <h4 class="font-semibold text-sm">Comments:</h4>
+                <ul class="list-none">
+                    @foreach($newsletter->comments as $comment)
+                        <li class="text-sm mb-2">
+                            <strong>{{ $comment->user->name }}:</strong> {{ Str::limit($comment->content, 50) }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @else
+            <p>No comments yet.</p>
+        @endif
+
+
+                @if ($user && $user->is_admin)
+            <div class="flex flex-wrap  mt-2 space-x-5">
+                <!-- Edit Button -->
+                <a href="{{ route('newsletters.edit', $newsletter->id) }}" class="bg-yellow-500 text-white py-2 px-4 rounded">
                     Edit
-                </button>
-                <button class="bg-red-500 text-white py-2 px-4 rounded">
-                    Remove
-                </button>
+                </a>
+
+                <!-- Delete Button -->
+                <form action="{{ route('newsletters.destroy', $newsletter->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this newsletter?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded">
+                        Remove
+                    </button>
+                </form>
             </div>
         @endif
+
+                <!-- Link to View the Newsletter -->
+                
+                    <div class="mt-4">
+                        <a href="{{ route('newsletters.show', $newsletter->id) }}" 
+                           class="bg-blue-600 text-white py-2 px-4 rounded">
+leave a comment                        </a>
+                    </div>
+                
+                    
             </div>
 
             <!-- Right Image Content -->
             <div style="flex: 0 0 30%; margin-left: 20px;">
-                <img src="{{ $newsletter->image_url }}" alt="Newsletter Image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            @if ($newsletter->image)
+                <img src="{{ asset('storage/' . $newsletter->image) }}" alt="Newsletter Image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            @endif            
             </div>
         </div>
     @endforeach

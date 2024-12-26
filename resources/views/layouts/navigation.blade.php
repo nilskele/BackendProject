@@ -18,12 +18,17 @@
                     <x-nav-link :href="route('about-us')" :active="request()->routeIs('about-us')">
                         {{ __('About Us') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('contact-us')" :active="request()->routeIs('contact-us')">
+                    <x-nav-link :href="route('contact.form')" :active="request()->routeIs('contact-us')">
                         {{ __('Contact Us') }}
                     </x-nav-link>
                     <x-nav-link :href="route('welcome')" :active="request()->routeIs('welcome')">
-    {{ __('Newsletter') }}
-</x-nav-link>
+                        {{ __('Newsletter') }}
+                    </x-nav-link>
+                    @if(Auth::user() && Auth::user()->is_admin)  <!-- Check if the user is an admin -->
+                     <x-nav-link :href="route('contact.messages.admin')" :active="request()->routeIs('contact.messages.admin')">
+                        {{ __('Admin: Contact Messages') }}
+                    </x-nav-link>
+                    @endif
 
                     
                 </div>

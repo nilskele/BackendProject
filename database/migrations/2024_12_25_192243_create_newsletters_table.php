@@ -11,16 +11,17 @@ class CreateNewslettersTable extends Migration
      *
      * @return void
      */
-    public function up()
+        public function up()
     {
         Schema::create('newsletters', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // Title of the newsletter
-            $table->text('content'); // Content of the newsletter
-            $table->binary('image'); // Image stored as a blob
-            $table->timestamps(); // Created_at and updated_at
+            $table->string('title');
+            $table->text('content');
+            $table->binary('image'); // For storing images as blobs
+            $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
