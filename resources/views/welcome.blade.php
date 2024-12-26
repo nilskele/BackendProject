@@ -20,9 +20,9 @@
 </div>
 @if($user && $user->is_admin)
     <div class="text-center mb-8">
-        <button class="bg-blue-600 text-white py-2 px-4 rounded">
+        <a href="{{ route('newsletters.create') }}" class="bg-blue-600 text-white py-2 px-4 rounded">
             Add Newsletter
-        </button>
+        </a>
     </div>
 @endif
 
@@ -72,7 +72,7 @@
 
             <!-- Right Image Content -->
             <div style="flex: 0 0 30%; margin-left: 20px;">
-                <img src="{{ $newsletter['image'] }}" alt="Newsletter Image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <img src="{{ $newsletter->image_url }}" alt="Newsletter Image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             </div>
         </div>
     @endforeach

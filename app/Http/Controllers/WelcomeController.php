@@ -2,40 +2,68 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
+use App\Models\Newsletter;
+use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
+    // Display the welcome page with newsletters
     public function index(Request $request)
     {
-        
-        $newsletters = [
-            [
-                'title' => 'Stay Updated',
-                'content' => 'Subscribe to our newsletter and be the first to know about our latest updates. This is a long content that should be truncated. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus non lorem ut dui varius congue.',
-                'image' => 'https://via.placeholder.com/300'
-            ],
-            [
-                'title' => 'Get the Latest Updates',
-                'content' => 'Sign up for our newsletter to receive the latest news, updates, and promotions. Short content here.',
-                'image' => 'https://via.placeholder.com/300'
-            ]
-        ];
+        // Retrieve newsletters from the database
+        $newsletters = Newsletter::all();
 
-        
+        // Handle 'show_more' and 'show_less' query to toggle content visibility
         $showFullText = [];
         foreach ($newsletters as $index => $newsletter) {
             $showFullText[$index] = $request->has('show_more') && $request->input('show_more') == $index;
         }
 
-        
         if ($request->has('show_less')) {
-            $showFullText = array_fill(0, count($newsletters), false); 
+            $showFullText = array_fill(0, count($newsletters), false); // Reset all to false (truncate text)
+        }
+        foreach ($newsletters as $newsletter) {
+            if ($newsletter->image) {
+                $newsletter->image_url = 'data:image/jpeg;base64,' . base64_encode($newsletter->image);
+            }
         }
 
-        
-        return view('welcome', compact('newsletters', 'showFullText'))->with('user', Auth::user()); 
+        // Pass data to the view
+        return view('welcome', compact('newsletters', 'showFullText'))->with('user', Auth::user());
+    }
+
+    // Show the form for creating a new newsletter (only for admins)
+    public function create()
+    {
+        $user = Auth::user();
+        if (!$user || !$user->is_admin) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('newsletters.create');
+    }
+
+    // Store the newly created newsletter
+    public function store(Request $request)
+    {
+        // Validate the input
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Only allow images
+        ]);
+
+        // Store the newsletter in the database
+        $newsletter = new Newsletter();
+        $newsletter->title = $request->input('title');
+        $newsletter->content = $request->input('content');
+
+        // Store the image as a blob (optional: you could store the image in storage instead)
+        $newsletter->image = file_get_contents($request->file('image')->getRealPath());
+
+        $newsletter->save();
+
+        return redirect()->route('welcome')->with('success', 'Newsletter added successfully!');
     }
 }
-

@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\WelcomeController; // Ensure this controller exists in the specified namespace
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\NewsletterController;
+
 
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome');// Use this one for the welcome page
@@ -21,7 +23,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    Route::get('/newsletters/create', [WelcomeController::class, 'create'])->name('newsletters.create');
+    Route::post('/newsletters', [WelcomeController::class, 'store'])->name('newsletters.store');
+});
 
 
 
@@ -44,6 +48,6 @@ Route::prefix('auth')->middleware('guest')->group(function () {
         ->name('password.store');
 });
 
-});
+
 
 require __DIR__.'/auth.php';
