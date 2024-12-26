@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/contact-messages', [ContactController::class, 'showMessages'])->name('contact.messages');
     Route::post('/admin/contact-messages/{message}/respond', [ContactController::class, 'respond'])->name('contact.respond');
 });
-
+Route::get('/newsletters/create', [WelcomeController::class, 'create'])->name('newsletters.create');
 Route::get('/newsletters/{newsletter}', [WelcomeController::class, 'show'])->name('newsletters.show');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
