@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QAController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\UserManagementController;
 
 
 
@@ -68,6 +69,13 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/update-question/{question}', [QAController::class, 'updateQuestion'])->name('qa.updateQuestion');
 
     
+});
+
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/user-management', [UserManagementController::class, 'index'])->name('user_management.index');
+    Route::post('/user-management/create', [UserManagementController::class, 'store'])->name('user_management.store');
+    Route::patch('/user-management/{user}/update-role', [UserManagementController::class, 'updateRole'])->name('user_management.update_role');
+    Route::delete('/user-management/{user}', [UserManagementController::class, 'destroy'])->name('user_management.destroy');
 });
 
 
