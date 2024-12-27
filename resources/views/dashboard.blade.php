@@ -41,10 +41,14 @@
 
         <!-- Users Section -->
         <div class="bg-blue-50 p-6 rounded-lg shadow-md">
-            <h2 class="text-xl font-semibold text-gray-700 mb-4">Manage Users</h2>
-            <p class="text-gray-600 mb-4">View, add, and manage user accounts.</p>
-            <a href="" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">Manage Users</a>
-        </div>
+    <h2 class="text-xl font-semibold text-gray-700 mb-4">Manage Users</h2>
+    <p class="text-gray-600 mb-4">View, add, and manage user accounts.</p>
+    <a href="{{ route('user_management.index') }}" 
+       class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+        Manage Users
+    </a>
+</div>
+
         <div class="bg-blue-50 p-6 rounded-lg shadow-md">
             <h2 class="text-xl font-semibold text-gray-700 mb-4">Manage Q&A</h2>
             <p class="text-gray-600 mb-4">Answer questions submitted by users.</p>
