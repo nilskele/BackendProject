@@ -33,17 +33,22 @@
         </div>
 
         <!-- Messages Section -->
-        <div class="bg-green-50 p-6 rounded-lg shadow-md">
+        <div class="bg-blue-50 p-6 rounded-lg shadow-md">
             <h2 class="text-xl font-semibold text-gray-700 mb-4">View Contact Messages</h2>
             <p class="text-gray-600 mb-4">Review and respond to user messages sent from the contact form.</p>
-            <a href="{{ route('contact.messages') }}" class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">View Messages</a>
+            <a href="{{ route('contact.messages') }}" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">View Messages</a>
         </div>
 
         <!-- Users Section -->
-        <div class="bg-yellow-50 p-6 rounded-lg shadow-md">
+        <div class="bg-blue-50 p-6 rounded-lg shadow-md">
             <h2 class="text-xl font-semibold text-gray-700 mb-4">Manage Users</h2>
             <p class="text-gray-600 mb-4">View, add, and manage user accounts.</p>
-            <a href="" class="bg-yellow-600 text-white py-2 px-4 rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">Manage Users</a>
+            <a href="" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500">Manage Users</a>
+        </div>
+        <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Manage Q&A</h2>
+            <p class="text-gray-600 mb-4">Answer questions submitted by users.</p>
+            <a href="{{ route('qa.admin') }}" class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500">Manage Q&A</a>
         </div>
     </div>
 
