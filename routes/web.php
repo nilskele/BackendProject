@@ -8,6 +8,9 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\QAController;
+use App\Http\Controllers\CategoryController;
+
 
 
 
@@ -48,7 +51,24 @@ Route::middleware('auth')->group(function () {
    
 });
 
+Route::get('/qa', [QAController::class, 'index'])->name('qa.user');
+Route::post('/qa', [QAController::class, 'store'])->name('qa.store');
 
+// Admin Category Management
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/qa/admin', [CategoryController::class, 'manage'])->name('qa.admin');
+    Route::post('/qa/categories', [CategoryController::class, 'store'])->name('categories.store');
+    Route::put('/qa/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/qa/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::get('/qa/admin', [QAController::class, 'showAdmin'])->name('qa.admin');
+    Route::delete('/qa/admin/questions/{question}', [QAController::class, 'destroy'])->name('qa.destroy');
+    Route::put('/qa/admin/questions/{question}/respond', [QAController::class, 'respond'])->name('qa.respond');
+    Route::put('/qa/{question}/update-answer', [QAController::class, 'updateAnswer'])->name('qa.updateAnswer');
+    Route::put('/update-question/{question}', [QAController::class, 'updateQuestion'])->name('qa.updateQuestion');
+
+    
+});
 
 
 

@@ -97,7 +97,7 @@
                     <div class="mt-4">
                         <a href="{{ route('newsletters.show', $newsletter->id) }}" 
                            class="bg-blue-600 text-white py-2 px-4 rounded">
-leave a comment                        </a>
+Comments                       </a>
                     </div>
                 
                     
