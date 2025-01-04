@@ -1,11 +1,9 @@
 @extends('layouts.fullwidth')
 
-    <!-- About Us Section -->
     @section('content')
 
         <div class="w-full px-6 sm:px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Left Text Content -->
                 <div class="flex flex-col justify-center">
                     <h2 class="text-3xl font-semibold text-blue-600 mb-4">About Us</h2>
                     <p class="text-lg text-gray-700 mb-6">
@@ -19,7 +17,6 @@
                     </p>
                 </div>
 
-                <!-- Right Image Content -->
                 <div class="flex justify-center items-center">
                     <img src="{{ asset('images/logo1.png') }}" alt="Your Image" class="w-full h-full object-cover rounded-lg shadow-lg">
                 </div>
@@ -27,5 +24,4 @@
         </div>
         @endsection
 
-    <!-- Q&A Section -->
 

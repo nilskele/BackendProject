@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Comment; // Ensure that the Comment class exists in this namespace
+use App\Models\Comment; 
 
 class Newsletter extends Model
 {

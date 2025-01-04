@@ -39,6 +39,15 @@
     <!-- Responded Messages -->
     <div>
         <h2 class="text-2xl font-semibold text-gray-700 mb-4">Responded Messages</h2>
+        <div class="flex justify-end mt-6">
+    <form action="{{ route('contact.clearBacklog') }}" method="POST" onsubmit="return confirm('Are you sure you want to clear all responded messages?');">
+        @csrf
+        <button type="submit" class="bg-red-600 text-white font-medium px-4 py-2 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+            Clear Responded Messages
+        </button>
+    </form>
+</div>
+
         @if($respondedMessages->isEmpty())
             <p class="text-gray-600">No messages have been responded to yet.</p>
         @else

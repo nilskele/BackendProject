@@ -3,20 +3,16 @@
 @section('content')
 <div class="max-w-7xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
 
-    <!-- Admin Header -->
     <h1 class="text-2xl font-semibold text-gray-800 mb-6">Admin Dashboard</h1>
 
-    <!-- Success Message -->
     @if(session('success'))
         <div class="bg-green-100 text-green-800 p-4 mb-6 rounded-md">
             {{ session('success') }}
         </div>
     @endif
 
-    <!-- Manage Categories Section -->
     <h2 class="text-xl font-semibold text-gray-800 mb-4">Manage Categories</h2>
     
-    <!-- Add Category Form -->
     <form action="{{ route('categories.store') }}" method="POST" class="mb-6">
         @csrf
         <div class="flex items-center space-x-4">
@@ -25,7 +21,6 @@
         </div>
     </form>
 
-    <!-- Category List -->
     <ul class="space-y-2">
         @foreach($categories as $category)
             <li class="flex items-center justify-between bg-gray-100 p-4 rounded">
@@ -47,7 +42,6 @@
         @endforeach
     </ul>
 
-    <!-- Unanswered Questions Section -->
     <h2 class="text-xl font-semibold text-gray-800 mt-8 mb-4">Unanswered Questions</h2>
     
     @foreach($categories as $category)
@@ -56,7 +50,6 @@
         @endphp
 
         @if($questions->isNotEmpty())
-            <!-- Category Card -->
             <div class="bg-white shadow-lg rounded-lg p-6 mb-6">
                 <div class="flex justify-between items-center cursor-pointer" onclick="toggleQuestions('category-{{ $category->id }}')">
                     <h3 class="text-xl font-semibold text-gray-800">{{ $category->name }}</h3>
@@ -65,7 +58,6 @@
                     </svg>
                 </div>
 
-                <!-- Questions Dropdown -->
                 <div id="category-{{ $category->id }}" class="space-y-4 mt-4 hidden">
                     @foreach($questions as $question)
                         <div class="bg-gray-100 p-4 rounded">
@@ -76,7 +68,6 @@
                                 </svg>
                             </div>
 
-                            <!-- Answer Dropdown -->
                             <div id="answer-{{ $question->id }}" class="mt-4 hidden pl-4">
                                 <form action="{{ route('qa.respond', $question) }}" method="POST" class="mt-4">
                                     @csrf
@@ -85,7 +76,6 @@
                                     <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded mt-2">Respond to Question</button>
                                 </form>
 
-                                <!-- Delete Question Form -->
                                 <form action="{{ route('qa.destroy', $question) }}" method="POST" class="mt-4">
                                     @csrf
                                     @method('DELETE')
@@ -101,9 +91,7 @@
 
 </div>
 
-<!-- JavaScript for accordion functionality -->
 <script>
-    // Toggle category questions visibility
     function toggleQuestions(categoryId) {
         const categoryDiv = document.getElementById(categoryId);
         const arrow = document.getElementById('arrow-' + categoryId.split('-')[1]);
@@ -112,7 +100,6 @@
         arrow.classList.toggle('rotate-180');
     }
 
-    // Toggle question answer visibility
     function toggleAnswer(answerId) {
         const answerDiv = document.getElementById(answerId);
         const arrow = document.getElementById('answer-arrow-' + answerId.split('-')[1]);

@@ -2,19 +2,16 @@
 
 @section('content')
 
-<!-- resources/views/contact/form.blade.php -->
 
 <div class="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
     <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Contact Us</h1>
 
-    <!-- Success message -->
     @if(session('success'))
         <div class="bg-green-100 text-green-800 p-4 mb-6 rounded-md">
             {{ session('success') }}
         </div>
     @endif
 
-    <!-- Validation errors -->
     @if($errors->any())
         <div class="bg-red-100 text-red-800 p-4 mb-6 rounded-md">
             <ul>
@@ -25,7 +22,6 @@
         </div>
     @endif
 
-    <!-- Contact form -->
     <form action="{{ route('contact.store') }}" method="POST">
         @csrf
         <div class="mb-4">
@@ -52,27 +48,23 @@
 
 
 <script>
-// Client-side validation using JavaScript
 document.getElementById("contactForm").addEventListener("submit", function(event) {
     let valid = true;
     const email = document.getElementById("email");
     const subject = document.getElementById("subject");
     const message = document.getElementById("message");
 
-    // Validate email format
     const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (!email.value.match(emailPattern)) {
         alert("Please enter a valid email.");
         valid = false;
     }
 
-    // Validate message length
     if (message.value.length < 10) {
         alert("Message must be at least 10 characters.");
         valid = false;
     }
 
-    // If validation fails, prevent form submission
     if (!valid) {
         event.preventDefault();
     }
