@@ -1,46 +1,40 @@
 <header class="bg-blue-600 text-white shadow-lg">
     <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
         <div class="flex items-center justify-between h-16">
-            <!-- Logo -->
             <div class="flex-shrink-0">
-                <img class="h-16 md:h-20 transition-all ease-in-out duration-300 transform hover:scale-105" src="{{ asset('images/logo1.png') }}" alt="Logo 1">
-            </div>
+            <a href="/">
+    <img class="h-16 md:h-20" src="{{ asset('images/logo1.png') }}" alt="Logo 1">
+</a>            </div>
 
-            <!-- Navbar Links -->
             <nav class="flex space-x-6 md:space-x-8 text-lg font-medium">
-                <!-- Home Link -->
                 <a href="/" class="text-yellow-500 hover:text-yellow-300 transition-colors duration-300 ease-in-out transform hover:scale-105 
                     {{ request()->is('/') ? 'text-yellow-300 underline' : '' }}">
                     Home
                 </a>
                 
-                <!-- About Us Link -->
                 <a href="{{ route('about-us') }}" class="text-yellow-500 hover:text-yellow-300 transition-colors duration-300 ease-in-out transform hover:scale-105 
                     {{ request()->is('about-us') ? 'text-yellow-300 underline' : '' }}">
                     About Us
                 </a>
 
-                <!-- Q&A Link -->
                 <a href="{{ route('qa.user') }}" class="text-yellow-500 hover:text-yellow-300 transition-colors duration-300 ease-in-out transform hover:scale-105 
                     {{ request()->is('qa/user') ? 'text-yellow-300 underline' : '' }}">
                     Q&A
                 </a>
+                <a href="{{ route('user.profiles') }}" class="text-yellow-500 hover:text-yellow-300 transition-colors duration-300 ease-in-out transform hover:scale-105 
+    {{ request()->is('profiles') ? 'text-yellow-300 underline' : '' }}">
+    Partners
+</a>
 
-                <!-- Contact Us Link -->
+
                 <a href="/contact" class="text-yellow-500 hover:text-yellow-300 transition-colors duration-300 ease-in-out transform hover:scale-105 
                     {{ request()->is('contact') ? 'text-yellow-300 underline' : '' }}">
                     Contact Us
                 </a>
 
-                <!-- Authentication Links -->
                 @auth
-                    <!-- Link to Dashboard -->
-                    <a href="{{ route('dashboard') }}" class="text-yellow-500 hover:text-yellow-300 transition-colors duration-300 ease-in-out transform hover:scale-105 
-                        {{ request()->is('dashboard') ? 'text-yellow-300 underline' : '' }}">
-                        Dashboard
-                    </a>
+                    
 
-                    <!-- Dropdown for authenticated user -->
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
@@ -55,11 +49,19 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
+                            @if (Auth::User()->is_admin)
+                            <x-dropdown-link :href="route('admin.dashboard')">
+                                {{ __('Admin Dashboard') }}
+                            </x-dropdown-link>
+                            @endif
+                            <x-dropdown-link :href=" route('dashboard')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+                            <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('Settings') }}
+                            </x-dropdown-link>
+                            
 
-                            <!-- Log out -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
@@ -69,7 +71,6 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <!-- Links for non-authenticated users -->
                     <a href="{{ route('login') }}" class="text-yellow-500 hover:text-yellow-300 transition-colors duration-300 ease-in-out transform hover:scale-105 
                         {{ request()->is('login') ? 'text-yellow-300 underline' : '' }}">
                         Log In

@@ -4,14 +4,12 @@
 <div class="max-w-7xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-8">
     <h1 class="text-2xl font-semibold text-gray-800 mb-6">User Management</h1>
 
-    <!-- Success Message -->
     @if(session('success'))
         <div class="bg-green-100 text-green-800 p-4 mb-6 rounded-md">
             <strong>Success:</strong> {{ session('success') }}
         </div>
     @endif
 
-    <!-- Create User Form -->
     <form action="{{ route('user_management.store') }}" method="POST" class="mb-6">
         @csrf
         <div class="grid grid-cols-2 gap-4">
@@ -26,7 +24,6 @@
         <button type="submit" class="bg-blue-600 text-white py-2 px-4 rounded mt-4">Create User</button>
     </form>
 
-    <!-- User List -->
     <table class="table-auto w-full bg-white shadow-md rounded-lg">
         <thead class="bg-gray-100">
             <tr>
@@ -43,7 +40,6 @@
                     <td class="px-4 py-2">{{ $user->email }}</td>
                     <td class="px-4 py-2">{{ $user->is_admin ? 'Admin' : 'User' }}</td>
                     <td class="px-4 py-2">
-                        <!-- Toggle Role -->
                         <form action="{{ route('user_management.update_role', $user) }}" method="POST" class="inline-block">
                             @csrf
                             @method('PATCH')
@@ -53,7 +49,6 @@
                             </button>
                         </form>
 
-                        <!-- Delete User -->
                         <form action="{{ route('user_management.destroy', $user) }}" method="POST" class="inline-block">
                             @csrf
                             @method('DELETE')

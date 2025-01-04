@@ -14,11 +14,9 @@
     </div>
 </div>
 
-    <!-- Comments Section -->
     <div class="mt-6">
         <h3 class="text-xl font-semibold">Comments</h3>
 
-        <!-- Display existing comments -->
         @foreach($newsletter->comments as $comment)
         <div class="comment bg-gray-100 p-4 mb-4 rounded">
             <strong>{{ $comment->user->name }}</strong> 
@@ -27,7 +25,6 @@
         </div>
         @endforeach
 
-        <!-- Comment Form (only shown if logged in) -->
         @auth
         <form id="comment-form" method="POST" action="{{ route('comments.store', $newsletter) }}">
             @csrf
@@ -49,17 +46,16 @@
 </div>
 
 <script>
-// Client-Side Validation with JavaScript
+
 document.getElementById('comment-form').addEventListener('submit', function(event) {
     var commentContent = document.getElementById('comment-content').value.trim();
     var errorMessage = document.getElementById('error-message');
 
-    // Check if the comment is empty
     if (!commentContent) {
-        event.preventDefault(); // Prevent form submission
-        errorMessage.style.display = 'block'; // Show error message
+        event.preventDefault(); 
+        errorMessage.style.display = 'block'; 
     } else {
-        errorMessage.style.display = 'none'; // Hide error message
+        errorMessage.style.display = 'none'; 
     }
 });
 </script>

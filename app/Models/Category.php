@@ -9,9 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name']; // Mass assignable fields
+    protected $fillable = ['name']; 
 
-    // Define the relationship to the Question model
     public function questions()
     {
         return $this->hasMany(Question::class);

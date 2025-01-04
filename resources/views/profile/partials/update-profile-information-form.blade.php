@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+            {{ __("Update your account's profile information, email address, profile image, and bio.") }}
         </p>
     </header>
 
@@ -13,16 +13,19 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <!-- Update Profile Form -->
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
+        <!-- Name Field -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
+        <!-- Email Field -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
@@ -47,6 +50,21 @@
             @endif
         </div>
 
+        <!-- Bio Field -->
+        <div>
+            <x-input-label for="bio" :value="__('Bio')" />
+            <textarea id="bio" name="bio" class="mt-1 block w-full" rows="4">{{ old('bio', $user->bio) }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('bio')" />
+        </div>
+
+        <!-- Profile Image Upload -->
+        <div>
+        <x-input-label for="profile_image" :value="__('Profile Image')" />
+        <input type="file" name="profile_image" id="profile_image" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm">
+    </div>
+        
+
+        <!-- Save Button -->
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
@@ -62,3 +80,4 @@
         </div>
     </form>
 </section>
+
