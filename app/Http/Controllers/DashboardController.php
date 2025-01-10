@@ -65,7 +65,6 @@ public function store(Request $request)
 
 public function destroy(Post $post)
 {
-    // Ensure the authenticated user is the owner of the post
     if (Auth::check() && Auth::id() !== $post->user_id) {
         return redirect()->route('dashboard')->with('error', 'Unauthorized action.');
     }

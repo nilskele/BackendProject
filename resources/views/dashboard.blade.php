@@ -37,7 +37,7 @@
     
     <div class="w-32 h-32 rounded-full overflow-hidden">
         @if ($user && $user->profile_image)
-            <img src="{{ asset('storage/' . $user->profile_image) }}" alt="Profile Image" class="w-32 h-32 rounded-full object-cover">
+            <img src="{{ asset($user->profile_image) }}" alt="Profile Image" class="w-32 h-32 rounded-full object-cover">
         @else
             <p>No profile image available</p>
         @endif
@@ -164,7 +164,7 @@
         @if(isset($posts) && $posts->isNotEmpty())
             @foreach ($posts->where('begin_date', '<=', now())->where('end_date', '>=', now()) as $post)
             <div class="bg-white p-4 rounded shadow">
-                <img alt="Image of a past liquidation item 1" class="w-full h-48 object-cover rounded mb-4" height="200" src="{{ asset('storage/' . $post->image) }}" width="300"/>
+                <img alt="Image of a past liquidation item 1" class="w-full h-48 object-cover rounded mb-4" height="200" src="{{ asset($post->image) }}" width="300"/>
                 <p style="margin-bottom: 10px; color: #555;">Categories:</p>
         <div style="display: flex; flex-wrap: wrap; gap: 10px;">
             @forelse ($post->categories as $category)
@@ -232,7 +232,7 @@
             @foreach ($posts->where('begin_date', '>', now()) as $post)
 
             <div class="bg-white p-4 rounded shadow">
-                <img alt="Image of a past liquidation item 1" class="w-full h-48 object-cover rounded mb-4" height="200" src="{{ asset('storage/' . $post->image) }}" width="300"/>
+                <img alt="Image of a past liquidation item 1" class="w-full h-48 object-cover rounded mb-4" height="200" src="{{ asset($post->image) }}" width="300"/>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
             @forelse ($post->categories as $category)
                 <span style="
@@ -300,7 +300,7 @@
             @foreach ($posts->where('end_date', '<', now()) as $post)
 
             <div class="bg-white p-4 rounded shadow">
-                <img alt="Image of a past liquidation item 1" class="w-full h-48 object-cover rounded mb-4" height="200" src="{{ asset('storage/' . $post->image) }}" width="300"/>
+                <img alt="Image of a past liquidation item 1" class="w-full h-48 object-cover rounded mb-4" height="200" src="{{ asset($post->image) }}" width="300"/>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
             @forelse ($post->categories as $category)
                 <span style="
