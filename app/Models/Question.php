@@ -11,7 +11,6 @@ class Question extends Model
 
     protected $fillable = ['user_name', 'email', 'question', 'answer', 'is_answered', 'category_id'];
 
-    // Define the relationship to the Category model
     public function category()
     {
         return $this->belongsTo(Category::class);

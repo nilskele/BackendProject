@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use CreatePostPostCategoryTable;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,6 +19,15 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         $this->call([
             AdminSeeder::class, // Add this line
+            PostCategorySeeder::class, // Add this line
+            UsersSeeder::class,
+            NewslettersSeeder::class,
+            PostsSeeder::class,
+            CommentsSeeder::class,
+            ContactMessagesSeeder::class,
+            CategoriesSeeder::class,
+            QuestionsSeeder::class,
+            PostPostCategorySeeder::class,
         ]);
         
     }
