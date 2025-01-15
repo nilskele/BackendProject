@@ -69,9 +69,8 @@ This will create an empty SQLite database file that Laravel will use.
 
 ## 8. Run Migrations and Seeders
 ```bash
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
-This will create the necessary tables in your SQLite database.
 
 ## 9. Install  Dependencies
 ```bash
