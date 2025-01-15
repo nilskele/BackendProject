@@ -130,8 +130,4 @@ Thank you for clarifying! Here’s the updated version of the text with the corr
 Some seeders already include images as examples (e.g., profile pages and liquidations), while others, like newsletters, do not display images by default. However, if you create a new newsletter, the image will be shown. For functionalities like liquidations and profiles, images are provided as examples in the seeders, but new or updated records will not display their images, even though the new image value is correctly stored in the database.
 
 This approach was chosen to enhance the visual aspect of the project by providing example images for most functionalities. It’s important to note that this does not affect the functionalities, everything works as intended.
-Once the server is running, you can access your application at:
-```bash
-http://127.0.0.1:8000
-```
-You should now be able to see the project running locally!
+
