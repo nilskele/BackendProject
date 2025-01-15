@@ -1,4 +1,6 @@
+
 # Steps to Run the Laravel Project Locally (Using XAMPP and SQLite)
+---
 ## 1. Prerequisites
 Before you begin, ensure that the following tools are installed:
 
@@ -99,6 +101,35 @@ php artisan serve
 By default, the application will be available at http://127.0.0.1:8000 in your browser.
 
 ## 12. Access the Application
+Once the server is running, you can access your application at:
+```bash
+http://127.0.0.1:8000
+```
+
+---
+# Sources 
+--- 
+
+https://chatgpt.com/share/6783e882-7490-800a-a04a-d1235c102d3c
+https://chatgpt.com/share/6783e895-0404-800a-9140-a42a62e3766f
+https://chatgpt.com/share/6783e8aa-d400-800a-b27a-9d9daef513d2
+https://chatgpt.com/share/678112b4-f598-800a-987f-306b8136b5f9
+https://chatgpt.com/share/6781121d-ca48-800a-91d0-73979dc85583
+https://chatgpt.com/share/6781121d-ca48-800a-91d0-73979dc85583
+https://inspector.dev/laravel-auth-routes-tutorial/
+https://stackoverflow.com/questions/39196968/laravel-5-3-new-authroutes
+https://stackoverflow.com/questions/51062030/updating-user-data-in-default-laravel-application
+https://stackoverflow.com/questions/54396408/how-to-make-user-admin-in-laravel
+
+---
+# Functionalities
+--- 
+
+Thank you for clarifying! Here’s the updated version of the text with the correction:
+
+Some seeders already include images as examples (e.g., profile pages and liquidations), while others, like newsletters, do not display images by default. However, if you create a new newsletter, the image will be shown. For functionalities like liquidations and profiles, images are provided as examples in the seeders, but new or updated records will not display their images, even though the new image value is correctly stored in the database.
+
+This approach was chosen to enhance the visual aspect of the project by providing example images for most functionalities. It’s important to note that this does not affect the functionalities, everything works as intended.
 Once the server is running, you can access your application at:
 ```bash
 http://127.0.0.1:8000
