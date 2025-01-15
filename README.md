@@ -124,7 +124,6 @@ https://stackoverflow.com/questions/54396408/how-to-make-user-admin-in-laravel
 # Functionalities
 --- 
 
-Thank you for clarifying! Here’s the updated version of the text with the correction:
 
 Some seeders already include images as examples (e.g., profile pages and liquidations), while others, like newsletters, do not display images by default. However, if you create a new newsletter, the image will be shown. For functionalities like liquidations and profiles, images are provided as examples in the seeders, but new or updated records will not display their images, even though the new image value is correctly stored in the database.
 
