@@ -19,11 +19,9 @@ cd your-laravel-project
 ```
 
 ## 3. Install PHP Dependencies
-Once you've cloned the project, you need to install the PHP dependencies using Composer. Run the following command:
 ```bash
 composer install
 ```
-This will download and install all the PHP packages required for your project as defined in composer.json.
 
 ## 4. Set Up Environment Variables
 Next, you need to set up your environment variables. Copy the .env.example file to a new .env file:
@@ -35,7 +33,7 @@ Open the .env file and configure your SQLite database settings. Since you're usi
 DB_CONNECTION=sqlite
 DB_DATABASE=/Applications/XAMPP/xamppfiles/htdocs/your-laravel-project/database/database.sqlite
 ```
-Make sure that the DB_DATABASE path points to where the SQLite database file is located. You can also create the database.sqlite file manually inside the database/ directory if it doesn't exist yet.
+
 
 ## 5. Mailtrap Integration for Sending Emails
 To send emails locally using Mailtrap:
@@ -69,36 +67,29 @@ touch database.sqlite
 ```
 This will create an empty SQLite database file that Laravel will use.
 
-## 8. Run Migrations (Optional)
-If your project includes database migrations, you need to run them to set up your database schema. Run the following command:
+## 8. Run Migrations and Seeders
 ```bash
 php artisan migrate
 ```
 This will create the necessary tables in your SQLite database.
 
-## 9. Install JavaScript Dependencies
-If your project uses front-end assets (e.g., Vue.js, React, etc.), you need to install the JavaScript dependencies using npm:
+## 9. Install  Dependencies
 ```bash
 npm install
 ```
-This will install the JavaScript packages required for your front-end code.
 
 ## 10. Compile the Assets
-If your project uses Laravel Mix or other asset bundlers, you need to compile your assets. Run:
 ```bash
 npm run dev
 ```
-This will compile your assets (CSS, JS, etc.) for local development.
 
 ## 11. Start XAMPP and Serve the Application
 Open XAMPP and start the following services:
 
 Apache (for serving the app)
-To run the Laravel application locally, you don't need a database server since you're using SQLite. Run the following command:
 ```bash
 php artisan serve
 ```
-By default, the application will be available at http://127.0.0.1:8000 in your browser.
 
 ## 12. Access the Application
 Once the server is running, you can access your application at:
