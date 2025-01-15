@@ -101,14 +101,23 @@ http://127.0.0.1:8000
 --- 
 
 https://chatgpt.com/share/6783e882-7490-800a-a04a-d1235c102d3c
+
 https://chatgpt.com/share/6783e895-0404-800a-9140-a42a62e3766f
+
 https://chatgpt.com/share/6783e8aa-d400-800a-b27a-9d9daef513d2
+
 https://chatgpt.com/share/678112b4-f598-800a-987f-306b8136b5f9
+
 https://chatgpt.com/share/6781121d-ca48-800a-91d0-73979dc85583
+
 https://chatgpt.com/share/6781121d-ca48-800a-91d0-73979dc85583
+
 https://inspector.dev/laravel-auth-routes-tutorial/
+
 https://stackoverflow.com/questions/39196968/laravel-5-3-new-authroutes
+
 https://stackoverflow.com/questions/51062030/updating-user-data-in-default-laravel-application
+
 https://stackoverflow.com/questions/54396408/how-to-make-user-admin-in-laravel
 
 ---
