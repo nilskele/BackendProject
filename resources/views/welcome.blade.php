@@ -26,7 +26,7 @@
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
 
-    @foreach($newsletters as $index => $newsletter)
+@foreach($newsletters->sortByDesc('created_at') as $index => $newsletter)
         <div style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 45%; margin-bottom: 20px; display: flex; flex-direction: row;">
             <div style="flex: 1;">
                 <h3 style="font-size: 24px; color: #1E40AF; font-weight: bold;">{{ $newsletter['title'] }}</h3>
